@@ -102,20 +102,23 @@ const choice = function (index: number) {
       opacity: 0;
       width: 95%;
 
-      & > * {
+      &>* {
         font-family: Cublic, Avenir, Helvetica, Arial, sans-serif;
         font-weight: normal;
       }
-      
+
       &:nth-child(1) {
         animation: appear 400ms 000ms forwards;
       }
+
       &:nth-child(2) {
         animation: appear 400ms 300ms forwards;
       }
+
       &:nth-child(3) {
         animation: appear 400ms 600ms forwards;
       }
+
       &:nth-child(4) {
         animation: appear 400ms 900ms forwards;
       }
@@ -123,7 +126,7 @@ const choice = function (index: number) {
       &:hover {
         filter: brightness(1.15) drop-shadow(5px 5px 5px #00000086);
         color: rgb(255, 255, 255);
-      width: 100%;
+        width: 100%;
 
       }
 
