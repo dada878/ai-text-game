@@ -193,4 +193,5 @@ const choice = function (index: number) {
     opacity: 0;
     transform: scale(0.9);
   }
-}</style>
+}
+</style>
