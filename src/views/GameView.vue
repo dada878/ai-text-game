@@ -1,41 +1,49 @@
 <template>
-  <div class="contianer">
+  <div class="container">
     <div class="board">
-      <h2>{{ description }}</h2><br>
+      <h2>{{ description }}</h2>
+      <br />
     </div>
     <div class="btn-group">
       <button
-        :class="{ btn: true, disappear: disappear && index != choiceBtnIndex, 'disappear-slow': index == choiceBtnIndex }"
-        v-for="item, index in options" @click="choice(index + 1)" :key="index">
-        <h2>{{ item }}</h2>
-      </button><br>
+        :class="{
+          btn: true,
+          disappear: disappear && index != choiceBtnIndex,
+          'disappear-slow': index == choiceBtnIndex,
+        }"
+        v-for="(item, index) in options"
+        @click="choice(index + 1)"
+        :key="index"
+      >
+        <h2>{{ item }}</h2></button
+      ><br />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref, Ref } from 'vue';
-const ws = new WebSocket('ws://127.0.0.1:13254')
+import { ref, Ref } from "vue";
+const ws = new WebSocket("ws://127.0.0.1:13254");
 
 ws.onopen = () => {
-  console.log('open connection')
-}
+  console.log("open connection");
+};
 
-let description: Ref<string> = ref("")
+let description: Ref<string> = ref("");
 let options: Ref<Array<string>> = ref([]);
 let disappear: Ref<boolean> = ref(false);
 let choiceBtnIndex: Ref<number> = ref(-1);
 
 ws.onclose = () => {
   console.log("disconnected");
-}
+};
 
-ws.onmessage = event => {
+ws.onmessage = (event) => {
   const data = JSON.parse(event.data);
   description.value = data.description;
   options.value = data.options;
   console.log(data);
-}
+};
 
 const choice = function (index: number) {
   ws.send(index.toString());
@@ -46,10 +54,11 @@ const choice = function (index: number) {
     disappear.value = false;
     choiceBtnIndex.value = -1;
   }, 1500);
-}
+};
+
 </script>
-<style lang="scss" scoped >
-.contianer {
+<style lang="scss" scoped>
+.container {
   width: 60%;
   margin: 0rem auto;
   display: flex;
@@ -74,7 +83,6 @@ const choice = function (index: number) {
     h2 {
       font-weight: normal;
     }
-
   }
 
   .btn-group {
@@ -102,7 +110,7 @@ const choice = function (index: number) {
       opacity: 0;
       width: 95%;
 
-      &>* {
+      & > * {
         font-family: Cublic, Avenir, Helvetica, Arial, sans-serif;
         font-weight: normal;
       }
@@ -127,7 +135,6 @@ const choice = function (index: number) {
         filter: brightness(1.15) drop-shadow(5px 5px 5px #00000086);
         color: rgb(255, 255, 255);
         width: 100%;
-
       }
 
       &:active {

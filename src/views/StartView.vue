@@ -3,8 +3,9 @@
     <h1>文字冒險遊戲</h1>
     <div class="btn-group">
       <button class="btn">
-        <RouterLink :to="'game'" class="btn-link"><h2>開始探索</h2></RouterLink>
-        
+        <RouterLink :to="'game'" class="btn-link">
+          <h2>開始探索</h2>
+        </RouterLink>
       </button>
       <button class="btn">
         <h2>遊戲設定</h2>
@@ -13,10 +14,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { RouterLink } from 'vue-router';
-
-
-
+import { RouterLink } from "vue-router";
 </script>
 <style scoped lang="scss">
 .start {
@@ -85,7 +83,6 @@ import { RouterLink } from 'vue-router';
       filter: brightness(1.15) drop-shadow(5px 5px 5px #00000086);
       color: rgb(255, 255, 255);
       width: 45%;
-
     }
 
     &:active {
@@ -150,4 +147,5 @@ import { RouterLink } from 'vue-router';
     opacity: 0;
     transform: scale(0.9);
   }
-}</style>
+}
+</style>
